@@ -7,11 +7,12 @@ using System.Threading.Tasks;
 
 namespace Hubtech.Dominio.Entidades
 {
-    public class Pedido
+    public class Pedido : Entidade
     {
         public int Id { get; set; }
         public DateTime DataPedido {get;set;}
         public int UsuarioId { get; set; }
+        public virtual Usuario Usuario { get; set; }
         public DateTime DataPrevistaEntrega { get; set; }
         public string CEP { get; set; }
         public string Estado { get; set; }
@@ -27,5 +28,19 @@ namespace Hubtech.Dominio.Entidades
         /// </summary>
 
         public ICollection<ItemPedido> ItensPedido { get; set; }
+
+        public override void Validate()
+        {
+            LimparMensagensValidacao();
+
+            if (!ItensPedido.Any())
+                AdicionarMensagemValidacao("Pedido não pode ficar sem item de pedido");
+
+            if (string.IsNullOrEmpty(CEP))
+                AdicionarMensagemValidacao("CEP deve ser preenchido");
+
+            if (FormaPagamentoId == 0)
+                AdicionarMensagemValidacao("Não foi informado a forma de pagamento");
+        }
     }
 }
