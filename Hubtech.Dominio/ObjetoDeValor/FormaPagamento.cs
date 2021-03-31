@@ -19,15 +19,15 @@ namespace Hubtech.Dominio.ObjetoDeValor
 
         public bool EhCartaoCredito
         {
-            get { return Id == (int)TipoFormaPagamentoEnum.Boleto; }
+            get { return Id == (int)TipoFormaPagamentoEnum.CartaoCredito; }
         }
         public bool EhDeposito
         {
-            get { return Id == (int)TipoFormaPagamentoEnum.Boleto; }
+            get { return Id == (int)TipoFormaPagamentoEnum.Deposito; }
         }
         public bool NaoFoiDefinido
         {
-            get { return Id == (int)TipoFormaPagamentoEnum.Boleto; }
+            get { return Id == (int)TipoFormaPagamentoEnum.NaoDefinido; }
         }
 
     }

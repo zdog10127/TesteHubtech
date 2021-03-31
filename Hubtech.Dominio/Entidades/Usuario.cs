@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Hubtech.Dominio.Entidades
 {
-    public class Usuario
+    public class Usuario : Entidade
     {
         public int Id { get; set; }
         public string Email { get; set; }
@@ -17,6 +17,15 @@ namespace Hubtech.Dominio.Entidades
         /// <summary>
         /// Um Usuario Pode ter nenhum pedido ou muitos pedidos.
         /// </summary>
-        public ICollection<Pedido> Pedidos { get; set; }
+        public virtual ICollection<Pedido> Pedidos { get; set; }
+
+        public override void Validate()
+        {
+            if (string.IsNullOrEmpty(Email))
+                AdicionarMensagemValidacao("Email não foi informado");
+
+            if (string.IsNullOrEmpty(Senha))
+                AdicionarMensagemValidacao("Senha não foi informado");
+        }
     }
 }

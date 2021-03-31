@@ -1,0 +1,9 @@
+{
+  "ConnectionStrings": {
+    "SqlServerConnection": "",
+    "HubtechDB": "server=localhost;uid=root;pwd=admin;database=HubtechDB"
+  }
+}
+
+
+
