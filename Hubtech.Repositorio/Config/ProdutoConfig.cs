@@ -28,6 +28,10 @@ namespace Hubtech.Repositorio.Config
             builder
                 .Property(p => p.Preco)
                 .IsRequired();
+
+            builder
+                .Property(p => p.Ncm)
+                .IsRequired();
         }
     }
 }

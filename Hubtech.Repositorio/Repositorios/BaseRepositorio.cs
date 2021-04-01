@@ -1,4 +1,5 @@
 ﻿using Hubtech.Dominio.Contratos;
+using Hubtech.Repositorio.Contexto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,39 +10,43 @@ namespace Hubtech.Repositorio.Repositorios
 {
     public class BaseRepositorio<TEntity> : IBaseRepositorio<TEntity> where TEntity : class
     {
-
-         
-        public BaseRepositorio()
+        protected readonly HubTechContexto Hubtechcontexto;
+        
+        public BaseRepositorio(HubTechContexto hubTechContexto)
         {
-
+            Hubtechcontexto = hubTechContexto;
         }
+
         public void Adicionar(TEntity entity)
         {
-            
+            Hubtechcontexto.Set<TEntity>().Add(entity);
+            Hubtechcontexto.SaveChanges();
         }
 
         public void Atualizar(TEntity entity)
         {
-            throw new NotImplementedException();
+            Hubtechcontexto.Set<TEntity>().Update(entity);
+            Hubtechcontexto.SaveChanges();
         }
 
         public TEntity ObterPorId(int id)
         {
-            throw new NotImplementedException();
+            return Hubtechcontexto.Set<TEntity>().Find(id);
         }
 
         public IEnumerable<TEntity> ObterTodos()
         {
-            throw new NotImplementedException();
+            return Hubtechcontexto.Set<TEntity>().ToList();
         }
 
         public void Remover(TEntity entity)
         {
-            throw new NotImplementedException();
+            Hubtechcontexto.Remove(entity);
+            Hubtechcontexto.SaveChanges();
         }
         public void Dispose()
         {
-            throw new NotImplementedException();
+            Hubtechcontexto.Dispose();
         }
     }
 }
