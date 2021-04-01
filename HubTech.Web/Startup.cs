@@ -1,4 +1,6 @@
+using Hubtech.Dominio.Contratos;
 using Hubtech.Repositorio.Contexto;
+using Hubtech.Repositorio.Repositorios;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -23,11 +25,13 @@ namespace HubTech.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            var connectionString = Configuration.GetConnectionString("HubtechDB");
-            services.AddDbContext<Contexto>(option =>
+            var connectionString = Configuration.GetConnectionString("Hubtech");
+            services.AddDbContext<HubTechContexto>(option =>
                                                 option.UseLazyLoadingProxies().
-                                                        UseMySql(connectionString,
+                                                        UseSqlServer(connectionString,
                                                                 m => m.MigrationsAssembly("Hubtech.Repositorio")));
+
+            services.AddScoped<IProdutoRepositorio, ProdutoRepositorio>();
             services.AddControllersWithViews();
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>

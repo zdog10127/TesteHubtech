@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Hubtech.Repositorio.Contexto
 {
-    public class Contexto : DbContext
+    public class HubTechContexto : DbContext
     {
         public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<Produto> Produtos { get; set; }
@@ -18,9 +18,14 @@ namespace Hubtech.Repositorio.Contexto
         public DbSet<ItemPedido> ItensPedidos { get; set; }
         public DbSet<FormaPagamento> FormaPagamento { get; set; }
 
-        public Contexto(DbContextOptions options) : base(options)
+        public HubTechContexto(DbContextOptions options) : base(options)
         {
+        
+        }
 
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsbuilder)
+        {
+            optionsbuilder.UseSqlServer("server=DESKTOP-FLHMQ8F;database=Hubtech;userid=Pichau;password=;");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -31,6 +36,22 @@ namespace Hubtech.Repositorio.Contexto
             modelBuilder.ApplyConfiguration(new PedidoConfig());
             modelBuilder.ApplyConfiguration(new ItemPedidoConfig());
             modelBuilder.ApplyConfiguration(new FormaPagamentoConfig());
+
+            /*modelBuilder.Entity<FormaPagamento>().HasData(new FormaPagamento()
+            { 
+                Id = 1, Nome = "Boleto", 
+                Descricao = "Forma de Pagamento Boleto"
+            },
+            new FormaPagamento()
+            {
+                Id = 2, Nome = "Cartao de Credito",
+                Descricao = " Forma de Pagamento Cartao de Crédito"
+            },
+            new FormaPagamento() 
+            { 
+                Id = 3, Nome = "Deposito",
+                Descricao = "Forma de Pagamento por Depósito"
+            });*/
 
             base.OnModelCreating(modelBuilder);
         }

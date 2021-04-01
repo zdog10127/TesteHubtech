@@ -1,7 +1,7 @@
 {
   "ConnectionStrings": {
     "SqlServerConnection": "",
-    "HubtechDB": "server=localhost;uid=root;pwd=admin;database=HubtechDB"
+    "HubtechDB": "server=DESKTOP-FLHMQ8FS;uid=Pichau;pwd=;database=Hubtech"
   }
 }
 
