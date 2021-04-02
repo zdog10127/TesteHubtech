@@ -9,6 +9,6 @@ namespace Hubtech.Dominio.Contratos
 {
     public interface IProdutoRepositorio : IBaseRepositorio<Produto>
     {
-
+        
     }
 }

@@ -25,7 +25,7 @@ namespace Hubtech.Repositorio.Contexto
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsbuilder)
         {
-            optionsbuilder.UseSqlServer("server=DESKTOP-FLHMQ8F;database=Hubtech;userid=Pichau;password=;");
+            optionsbuilder.UseSqlServer("server=hubtech.database.windows.net;database=ProjectHubTech;User ID=zdog;password=Gabriel123;");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

@@ -1,9 +1,0 @@
-{
-  "ConnectionStrings": {
-    "SqlServerConnection": "",
-    "HubtechDB": "server=DESKTOP-FLHMQ8FS;uid=Pichau;pwd=;database=Hubtech"
-  }
-}
-
-
-

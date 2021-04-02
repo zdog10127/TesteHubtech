@@ -1,5 +1,6 @@
 ﻿using Hubtech.Dominio.Contratos;
 using Hubtech.Dominio.Entidades;
+using Hubtech.Repositorio.Contexto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace Hubtech.Repositorio.Repositorios
 {
     public class UsuarioRepositorio : BaseRepositorio<Usuario> , IUsuarioRepositorio
     {
-        public UsuarioRepositorio()
+        public UsuarioRepositorio(HubTechContexto hubTechContexto) : base(hubTechContexto)
         {
 
         }
