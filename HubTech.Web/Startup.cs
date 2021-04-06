@@ -29,6 +29,7 @@ namespace HubTech.Web
             option.UseSqlServer(Configuration.GetConnectionString("DevConnection")));
 
             services.AddScoped<IProdutoRepositorio, ProdutoRepositorio>();
+            services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();
             services.AddControllersWithViews();
             
             // In production, the Angular files will be served from this directory

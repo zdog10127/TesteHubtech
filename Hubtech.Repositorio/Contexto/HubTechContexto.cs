@@ -20,7 +20,7 @@ namespace Hubtech.Repositorio.Contexto
 
         public HubTechContexto(DbContextOptions options) : base(options)
         {
-        
+
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsbuilder)
