@@ -15,5 +15,10 @@ namespace Hubtech.Repositorio.Repositorios
         {
 
         }
+
+        public Usuario Obter(string email, string senha)
+        {
+            return Hubtechcontexto.Usuarios.FirstOrDefault(u => u.Email == email && u.Senha == senha);
+        }
     }
 }
